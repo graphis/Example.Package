@@ -82,3 +82,12 @@ $signal->handler(
         }
     }
 );
+
+// Session Manager
+$di->setter['Example\PackageWeb\PageController']['setSessionManager'] = $di->lazyGet('session_manager');
+
+$di->params['Example\PackageView\Helper\SessionManager']['session_manager'] = $di->lazyGet('session_manager');
+
+$di->params['Aura\View\HelperLocator']['registry']['sessionManager'] = function () use ($di) {
+    return $di->newInstance('Example\PackageView\Helper\SessionManager');
+};

@@ -7,6 +7,8 @@ use Example\Package\GenericFactory;
 abstract class PageController extends AbstractPage
 {
     protected $factory;
+    
+    protected $session_manager;
 
     public function setFactory(GenericFactory $factory)
     {
@@ -16,5 +18,15 @@ abstract class PageController extends AbstractPage
     public function getFactory()
     {
         return $this->factory;
+    }
+    
+    public function setSessionManager(SessionManager $session_manager)
+    {
+        $this->session_manager = $session_manager;
+    }
+    
+    public function getSessionManager()
+    {
+        return $this->session_manager;
     }
 }
